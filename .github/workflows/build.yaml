@@ -20,7 +20,7 @@ jobs:
 
     - run: mkdir -p $GITHUB_WORKSPACE/build_artifacts/dist
     - run: ls
-      working-directory: $GITHUB_WORKSPACE/uvloop
+      working-directory: ${{ env.GITHUB_WORKSPACE }}
     - run: make clean
       working-directory: $GITHUB_WORKSPACE/uvloop
     - run: make -C "${{ env.GITHUB_WORKSPACE }}/build_artifacts"
