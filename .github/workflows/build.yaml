@@ -20,6 +20,8 @@ jobs:
       with:
         python-version: '3.8'
     - uses: actions/checkout@v1
+      with:
+        submodules: 'recursive'
 
     - run: |
         pip install --upgrade setuptools pip wheel
