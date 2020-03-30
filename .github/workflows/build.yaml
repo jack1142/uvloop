@@ -16,6 +16,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    - uses: actions/setup-python@v1
+      with:
+        python-version: '3.8'
     - uses: actions/checkout@v1
 
     - run: mkdir -p $GITHUB_WORKSPACE/dist
