@@ -18,14 +18,14 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - run: mkdir -p $GITHUB_WORKSPACE/build_artifacts/dist
+    - run: mkdir -p $GITHUB_WORKSPACE/dist
     - run: ls -al
       working-directory: ${{ env.GITHUB_WORKSPACE }}
     - run: make clean
       working-directory: ${{ env.GITHUB_WORKSPACE }}
-    - run: make -C $GITHUB_WORKSPACE/build_artifacts
+    - run: make -C $GITHUB_WORKSPACE
       working-directory: ${{ env.GITHUB_WORKSPACE }}
-    - run: pip wheel $GITHUB_WORKSPACE/build_artifacts -w $GITHUB_WORKSPACE/build_artifacts/dist/
+    - run: pip wheel $GITHUB_WORKSPACE -w $GITHUB_WORKSPACE/dist/
       working-directory: ${{ env.GITHUB_WORKSPACE }}
 
     - uses: actions/upload-artifact@v1
