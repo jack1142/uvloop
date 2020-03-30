@@ -18,9 +18,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - run: |
-        make clean && make -C $HOME/build_artifacts
-        pip wheel $HOME/build_artifacts -w $HOME/build_artifacts/dist/
+    - run: mkdir -p $HOME/build_artifacts/dist
+    - run: make clean && make -C $HOME/build_artifacts
+    - run: pip wheel $HOME/build_artifacts -w $HOME/build_artifacts/dist/
 
     - uses: actions/upload-artifact@v1
       with:
