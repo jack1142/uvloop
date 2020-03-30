@@ -20,13 +20,13 @@ jobs:
 
     - run: mkdir -p $GITHUB_WORKSPACE/build_artifacts/dist
     - run: ls
-      working-directory: ${{ env.GITHUB_WORKSPACE }}/uvloop
+      working-directory: $GITHUB_WORKSPACE/uvloop
     - run: make clean
-      working-directory: ${{ env.GITHUB_WORKSPACE }}/uvloop
+      working-directory: $GITHUB_WORKSPACE/uvloop
     - run: make -C "${{ env.GITHUB_WORKSPACE }}/build_artifacts"
-      working-directory: ${{ env.GITHUB_WORKSPACE }}/uvloop
+      working-directory: $GITHUB_WORKSPACE/uvloop
     - run: pip wheel "${{ env.GITHUB_WORKSPACE }}/build_artifacts" -w "${{ env.GITHUB_WORKSPACE }}/build_artifacts/dist/"
-      working-directory: ${{ env.GITHUB_WORKSPACE }}/uvloop
+      working-directory: $GITHUB_WORKSPACE/uvloop
 
     - uses: actions/upload-artifact@v1
       with:
