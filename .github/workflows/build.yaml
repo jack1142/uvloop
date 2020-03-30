@@ -23,9 +23,9 @@ jobs:
       working-directory: ${{ env.GITHUB_WORKSPACE }}
     - run: make clean
       working-directory: ${{ env.GITHUB_WORKSPACE }}
-    - run: make -C "${{ env.GITHUB_WORKSPACE }}/build_artifacts"
+    - run: make -C $GITHUB_WORKSPACE/build_artifacts
       working-directory: ${{ env.GITHUB_WORKSPACE }}
-    - run: pip wheel "${{ env.GITHUB_WORKSPACE }}/build_artifacts" -w "${{ env.GITHUB_WORKSPACE }}/build_artifacts/dist/"
+    - run: pip wheel $GITHUB_WORKSPACE/build_artifacts -w $GITHUB_WORKSPACE/build_artifacts/dist/
       working-directory: ${{ env.GITHUB_WORKSPACE }}
 
     - uses: actions/upload-artifact@v1
