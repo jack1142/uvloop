@@ -18,10 +18,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - run: cd $GITHUB_WORKSPACE/uvloop
     - run: mkdir -p $GITHUB_WORKSPACE/build_artifacts/dist
-    - run: make clean && make -C $GITHUB_WORKSPACE/build_artifacts
-    - run: pip wheel $HOME/build_artifacts -w $GITHUB_WORKSPACE/build_artifacts/dist/
+    - run: cd $GITHUB_WORKSPACE/uvloop && make clean && make -C $GITHUB_WORKSPACE/build_artifacts
+    - run: cd $GITHUB_WORKSPACE/uvloop && pip wheel $GITHUB_WORKSPACE/build_artifacts -w $GITHUB_WORKSPACE/build_artifacts/dist/
 
     - uses: actions/upload-artifact@v1
       with:
