@@ -21,15 +21,14 @@ jobs:
         python-version: '3.8'
     - uses: actions/checkout@v1
 
+    - run: |
+        pip install --upgrade setuptools pip wheel
+        pip install -r .ci/requirements.txt
     - run: mkdir -p $GITHUB_WORKSPACE/dist
     - run: ls -al
-      working-directory: ${{ env.GITHUB_WORKSPACE }}
     - run: make clean
-      working-directory: ${{ env.GITHUB_WORKSPACE }}
     - run: make -C $GITHUB_WORKSPACE
-      working-directory: ${{ env.GITHUB_WORKSPACE }}
     - run: pip wheel $GITHUB_WORKSPACE -w $GITHUB_WORKSPACE/dist/
-      working-directory: ${{ env.GITHUB_WORKSPACE }}
 
     - uses: actions/upload-artifact@v1
       with:
