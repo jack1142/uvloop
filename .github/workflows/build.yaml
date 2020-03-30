@@ -26,6 +26,11 @@ jobs:
     - run: |
         pip install --upgrade setuptools pip wheel
         pip install -r .ci/requirements.txt
+    - run: |
+        brew install gnu-sed
+        brew outdated libtool || brew upgrade libtool
+        brew outdated autoconf || brew upgrade autoconf
+        brew outdated automake || brew upgrade automake
     - run: mkdir -p $GITHUB_WORKSPACE/dist
     - run: ls -al
     - run: make clean
