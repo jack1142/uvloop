@@ -18,11 +18,12 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - run: mkdir -p $HOME/build_artifacts/dist
-    - run: make clean && make -C $HOME/build_artifacts
-    - run: pip wheel $HOME/build_artifacts -w $HOME/build_artifacts/dist/
+    - run: cd $GITHUB_WORKSPACE/uvloop
+    - run: mkdir -p $GITHUB_WORKSPACE/build_artifacts/dist
+    - run: make clean && make -C $GITHUB_WORKSPACE/build_artifacts
+    - run: pip wheel $HOME/build_artifacts -w $GITHUB_WORKSPACE/build_artifacts/dist/
 
     - uses: actions/upload-artifact@v1
       with:
         name: my-artifact
-        path: ${{ env.HOME }}/build_artifacts/dist/
+        path: ${{ env.GITHUB_WORKSPACE }}/build_artifacts/dist/
